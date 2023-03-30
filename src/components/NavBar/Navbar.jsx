@@ -3,7 +3,7 @@
 export const NavBar = () => {
     return (
         <div>
-            <h1>Navbar</h1>     
+            <h1>NavBar</h1>     
         </div>
     );
 }

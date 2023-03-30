@@ -1,9 +1,9 @@
 import './App.css';
-import {Navbar} from './NavBar/Navbar.jsx'
+import {NavBar} from './NavBar/Navbar.jsx'
 export function App() {
   return (
     <div>
-      <Navbar />
+      <NavBar />
     </div>
   );
 }
