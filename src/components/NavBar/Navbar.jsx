@@ -1,34 +1,25 @@
-import { useRef } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React from 'react';
 import CartWidget from '../CartWidget/CartWidget';
-import "../../assets/style.css";
-export const NavBar = () => {
-    const navRef = useRef();
 
-    const showNavbar = () => {
-        navRef.current.classList.toogle('responsive_nav')
-    }
-    
+const NavBar = () => {
     return (
-        <div>
-            <header>
-                <h3>Happy Store</h3>
-                <nav ref={navRef}>
-                    <a href="#">Accesorios</a>
-                    <a href="#">Celulares</a>
-                    <a href="#">Computadoras</a>
-                    <a href="#">Televisores</a>
-                    <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-                        <FaTimes/>
-                    </button>
-                </nav>
-                <CartWidget />
-                <button className="nav-btn" onClick={showNavbar}>
-                    <FaBars/> 
+       <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="#">Happy Store</a>
+                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon" />
                 </button>
-            </header>    
-        </div>
-    );
+                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                        <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a className="nav-link" href="#">Computadoras</a>
+                        <a className="nav-link" href="#">Celulares</a>
+                        <a className="nav-link "href="#">Televisores</a>
+                </div>
+                </div>
+            </div>
+        </nav>
+            );
 }
 
- 
+export default NavBar;
