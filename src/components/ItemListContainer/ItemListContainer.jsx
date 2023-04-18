@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-
+import { ItemList } from "../ItemList/ItemList"
 // Consulta a mis productos de mi base de datos y se los envio a ItemList. COMPONENTE PRINCIPAL
 const BDD = [
     {
@@ -123,29 +123,28 @@ const BDD = [
         "img": "img/amdRyzen7.jpg"
     }
 ]
-export const ItemListContainer = () => {
 
-    const [productos, setProductos] = useState([])
+    export const ItemListContainer = () => {
+        const [productos, setProductos] = useState ([])
 
-    useEffect( ()=> {
-      const promesa = () => new Promise ((resolve, reject) => { 
-        if (true) {
-            resolve(BDD)
-        }
-        reject("No posee los permisos necesarios")
-      }) 
+        useEffect(()=> {
+            fetch('./json/productos.json')
+                .then(response=>response.json())
 
-      promesa()
-        .then(productos => console.log(productos))
-        .catch(error => console.log(error))
+                .then(productos => {
+                    const productosFiltrados = productos.filter(prod => prod.stock > 0)
 
-    }, [] )
+                    setProductos (productosFiltrados)
+                })
+        }, [] )
 
-    return (
-        <div>
-            <h1></h1>
-        </div>
-    )
-}
+        return (
+            <div className="row">
+                {<ItemList productos={productos} />}
+            </div>
+        )
+    }
 
-export default ItemListContainer
+    
+
+

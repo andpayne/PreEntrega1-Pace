@@ -1,7 +1,7 @@
-import React from 'react';
-import CartWidget from '../CartWidget/CartWidget';
+import { CartWidget } from "../CartWidget/CartWidget";
 
-const NavBar = () => {
+
+export const NavBar = () => {
     return (
        <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -17,9 +17,12 @@ const NavBar = () => {
                         <a className="nav-link "href="#">Televisores</a>
                 </div>
                 </div>
+                <CartWidget />
             </div>
         </nav>
-            );
+    )
 }
 
-export default NavBar;
+
+
+

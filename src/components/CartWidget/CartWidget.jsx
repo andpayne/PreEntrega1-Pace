@@ -1,11 +1,10 @@
 import cart from './assets/cart.png'
-const CartWidget = () => {
+export const CartWidget = ( { cantCarrito } ) => {
     return (
-        <div>
+        <>
             <img src={cart} alt="cart-widget" />
-            0
-        </div>
+            <p> {cantCarrito} </p>
+        </>
     )
 }
 
-export default CartWidget

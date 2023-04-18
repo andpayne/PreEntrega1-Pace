@@ -1,32 +1,16 @@
-import { useState } from "react";
+import { useCount } from "../../hooks/useCount"
 
-const ItemCount = ({stock, initial, onAdd})=> {
-    const [quantity, setQuantity] = useState(initial)
-
-    const increment = () => {
-        if(quantity < stock) {
-            setQuantity(quantity+1)
-        }
-    }
-
-    const decrement = () => {
-        if(quantity > 1) {
-            setQuantity(quantity-1)
-        }
-    }
+export const ItemCount = ({ ValInicial, min, max, onAdd })=> {
+    const { count, minus, sum, reset } = useCount(ValInicial, min, max)
 
     return(
-        <div className = 'Counter'>
-            <div className = 'Controls'>
-                <button className = "Button" onClick={decrement}>-</button>
-                <h4 className = "Number">{quantity}</h4>
-                <button className = "Button" onClick={increment}>+</button>
-            </div>
-            <button className = 'Button' onClick={()=> onAdd(quantity)} disable={!stock} >
-                Agregar al carrito
-            </button>
-        </div>
+      <>
+        <button className="btn btn-dark" onClick={minus}>-</button>
+        { count }
+        <button className="btn btn-dark" onClick={sum}>+</button>
+        <button className="btn btn-dark" onClick={reset}>Reset</button>
+        <button className="btn btn-light" onClick={ () => onAdd(count) }>Agregar al Carrito</button>
+      </>
     )
 }
 
-export default ItemCount
